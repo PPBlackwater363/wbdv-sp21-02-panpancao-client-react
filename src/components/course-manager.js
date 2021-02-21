@@ -2,7 +2,7 @@ import React from 'react';
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
 import CourseEditor from "./course-editor";
-import {Route} from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 import courseService, {updateCourse} from "../services/course-service";
 import './course-manager-style.css';
 
@@ -129,7 +129,16 @@ class CourseManager extends React.Component {
                            style={{color: 'red'}}>
                         </i>
                         </a>
+                        <a href="#">
+                            <Link to="/courses/grid">
+                                <i className="fas fa-th" style={{color:'red'}}></i>
+                            </Link>
+                        </a>
+                        <Link to="/courses/table">
+                            <i className="fas fa-list " style={{color:'red'}}></i>
+                        </Link>
                     </div>
+
                 </nav>
 
                 </body>
