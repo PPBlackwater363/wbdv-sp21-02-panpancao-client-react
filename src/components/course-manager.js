@@ -65,7 +65,8 @@ class CourseManager extends React.Component {
             })))
         // this.state.courses.push(newCourse)
         // this.setState(this.state)
-        this.setState({newCourse: {title: ""}})
+        this.setState({newCourse: {title: "", owner: "me",
+                lastModified:"6:45 PM" }})
         event.preventDefault()
     }
 
@@ -129,14 +130,7 @@ class CourseManager extends React.Component {
                            style={{color: 'red'}}>
                         </i>
                         </a>
-                        <a href="#">
-                            <Link to="/courses/grid">
-                                <i className="fas fa-th" style={{color:'red'}}></i>
-                            </Link>
-                        </a>
-                        <Link to="/courses/table">
-                            <i className="fas fa-list " style={{color:'red'}}></i>
-                        </Link>
+
                     </div>
 
                 </nav>
@@ -153,6 +147,7 @@ class CourseManager extends React.Component {
                 <Route path="/courses/grid">
                 <CourseGrid
                     deleteCourse={this.deleteCourse}
+                    updateCourse={this.updateCourse}
                     courses={this.state.courses}/>
                 </Route>
 

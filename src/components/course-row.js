@@ -44,13 +44,13 @@ const CourseRow = (
 
                 {!editing && <i onClick={() => setEditing(true)}
                                 className="fas fa-edit"
-                                style={{color:'primary'}}
+                                style={{color:'#0275d8'}}
                 ></i>}
                 {editing && <i onClick={() => deleteCourse(course)} className="fas fa-trash"
-                               style={{color:'red'}}
+                               style={{color:'#d9534f'}}
                 ></i>}
                 {editing && <i onClick={() => saveTitle()}
-                               className="fas fa-check" style={{color:'green'}} ></i>}
+                               className="fas fa-check" style={{color:'#5cb85c'}} ></i>}
             </td>
         </tr>)
 }
