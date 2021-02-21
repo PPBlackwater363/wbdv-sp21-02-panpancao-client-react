@@ -102,7 +102,7 @@ class CourseManager extends React.Component {
                 <body className="bg-light">
                 <nav className="navbar bg-primary sticky-top">
                     <div className="col-md-3">
-                        <a href="">
+                        <a href="/">
                             <i className="fas fa-bars fa-2x " style={{color: 'white'}}></i>
                         </a>
                         <label></label>
