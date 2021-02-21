@@ -25,6 +25,7 @@ const CourseRow = (
         return (<tr>
             <td> </td>
             <td scope="col-2" style={{width: '25%'}}>
+                <i className="fas fa-file-alt col-md-auto text-primary"></i>
                 {
                     !editing &&
                     <Link to="/courses/editor">
@@ -35,6 +36,7 @@ const CourseRow = (
                     value={newTitle}
                     className="form-control"/>}
             </td>
+
 
             <td scope="col-2" style={{width: '25%'}}>{owner}</td>
             <td>{lastModified}</td>
