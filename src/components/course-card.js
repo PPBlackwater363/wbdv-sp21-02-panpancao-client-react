@@ -48,7 +48,7 @@ const CourseCard = ({course, updateCourse, deleteCourse}) => {
                                     className="fas fa-edit"
                                     style={{color:'#0275d8'}}
                     ></i>}
-                    {editing && <i onClick={() => deleteCourse(course)} className="fas fa-trash"
+                    {editing && <i onClick={() => (deleteCourse(course), setEditing(false))} className="fas fa-trash"
                                    style={{color:'#d9534f'}}
                     ></i>}
                     {editing && <i onClick={() => saveTitle()}
