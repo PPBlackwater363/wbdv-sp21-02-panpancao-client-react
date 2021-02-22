@@ -15,8 +15,8 @@ const CourseCard = ({course, updateCourse, deleteCourse}) => {
     }
 
     return (
-    <div className="col-3">
-        <div className="card" style={{width: "18rem"}}>
+    <div className="card col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+        <div className="card">
             <img src="https://i.ibb.co/3Y5q2j7/start-small.png"
                  alt="start-small"
                  border="0"/>

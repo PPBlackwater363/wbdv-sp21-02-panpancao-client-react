@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {updateCourse} from "../services/course-service";
 
-
 const CourseRow = (
     {deleteCourse,
         updateCourse,
@@ -24,7 +23,7 @@ const CourseRow = (
 
         return (<tr>
             <td> </td>
-            <td scope="col-2" style={{width: '25%'}}>
+            <td className="d-none d-md-table-cell" scope="col-2" style={{width: '25%'}}>
                 <i className="fas fa-file-alt col-md-auto text-primary"></i>
                 {
                     !editing &&
@@ -37,16 +36,15 @@ const CourseRow = (
                     className="form-control"/>}
             </td>
 
-
             <td scope="col-2" style={{width: '25%'}}>{owner}</td>
-            <td>{lastModified}</td>
+            <td className="d-none d-lg-table-cell">{lastModified}</td>
             <td >
 
                 {!editing && <i onClick={() => setEditing(true)}
                                 className="fas fa-edit"
                                 style={{color:'#0275d8'}}
                 ></i>}
-                {editing && <i onClick={() => deleteCourse(course)} className="fas fa-trash"
+                {editing && <i onClick={() => (deleteCourse(course),setEditing(false))} className="fas fa-trash"
                                style={{color:'#d9534f'}}
                 ></i>}
                 {editing && <i onClick={() => saveTitle()}

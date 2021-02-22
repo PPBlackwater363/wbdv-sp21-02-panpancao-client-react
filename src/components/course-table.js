@@ -25,11 +25,11 @@ export default class CourseTable
                             Title
                         </th>
                         <th scope="col-2"
-                            className="font-weight-bold" style={{color: '#808080', width:'20%', font:'15px'}}>
+                            className="font-weight-bold d-none d-md-table-cell" style={{color: '#808080', width:'20%', font:'15px'}}>
                             Owned By
                         </th>
                         <th scope="col-2"
-                            className="font-weight-bold" style={{color: '#808080', width:'15%'}}>
+                            className="font-weight-bold d-none d-lg-table-cell" style={{color: '#808080', width:'15%'}}>
                             Last modified
                         </th>
                         <th scope="col-1">
