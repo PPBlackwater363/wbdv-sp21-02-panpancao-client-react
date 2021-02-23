@@ -13,7 +13,7 @@ const CourseEditor = ({history}) =>
         {/*    <i onClick={() => history.goBack()} className="fas fa-times float-right"></i>*/}
         {/*</h2>*/}
 
-        <nav className="navbar navbar-dark bg-secondary">
+        <nav className="navbar navbar-dark bg-secondary row">
             <Link to="/courses/table">
                 <i className="fas fa-arrow-left fa-2x" style={{color:"white"}}></i>
             </Link>
@@ -64,7 +64,7 @@ const CourseEditor = ({history}) =>
                style={{color:"white"}}></i>
         </nav>
 
-        <div className="container-fluid">
+        <div className="container-fluid row">
             <div className="row">
                 <nav className="col-md-3 d-none d-md-block bg-dark ">
                     <div className="sidebar-sticky">

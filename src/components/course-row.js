@@ -23,7 +23,7 @@ const CourseRow = (
 
         return (<tr>
             <td> </td>
-            <td className="d-none d-md-table-cell" scope="col-2" style={{width: '25%'}}>
+            <td  scope="col-2" style={{width: '25%'}}>
                 <i className="fas fa-file-alt col-md-auto text-primary"></i>
                 {
                     !editing &&
@@ -36,7 +36,7 @@ const CourseRow = (
                     className="form-control"/>}
             </td>
 
-            <td scope="col-2" style={{width: '25%'}}>{owner}</td>
+            <td className="d-none d-md-table-cell" scope="col-2" style={{width: '25%'}}>{owner}</td>
             <td className="d-none d-lg-table-cell">{lastModified}</td>
             <td >
 

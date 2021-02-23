@@ -21,7 +21,7 @@ class CourseManager extends React.Component {
             newCourse: {
                 title: e.target.value,
                 owner: "me",
-                lastModified:"6:45 PM"
+                lastModified:new Date().toLocaleDateString()
             }
         })
     }
@@ -52,7 +52,14 @@ class CourseManager extends React.Component {
 
 
     addCourse = (event) => {
-        const courseToAdd = this.state.newCourse
+        let courseToAdd = this.state.newCourse
+        if (this.state.newCourse.title.trim() === "") {
+            courseToAdd={
+                title: "New Course",
+                owner: "me",
+                lastModified: new Date().toLocaleDateString()
+            }
+        }
 
         courseService.createCourse(courseToAdd)
             .then(course => this.setState(
@@ -66,7 +73,7 @@ class CourseManager extends React.Component {
         // this.state.courses.push(newCourse)
         // this.setState(this.state)
         this.setState({newCourse: {title: "", owner: "me",
-                lastModified:"6:45 PM" }})
+                lastModified:new Date().toLocaleDateString()}})
         event.preventDefault()
     }
 
@@ -100,7 +107,7 @@ class CourseManager extends React.Component {
                 {/*<h1>Course Manager</h1>*/}
                 {/*<button onClick={this.addCourse}>Add Course</button>*/}
                 <body className="bg-light">
-                <nav className="navbar bg-primary sticky-top">
+                <nav className="navbar row bg-primary sticky-top">
                     <div className="col-md-3">
                         <a href="/">
                             <i className="fas fa-bars fa-2x " style={{color: 'white'}}></i>
@@ -166,7 +173,7 @@ class CourseManager extends React.Component {
 
                 <a href="#">
                     <i onClick={this.addCourse}
-                       className="fas fa-plus-circle fa-4x col-md-auto float-right"
+                       className="fas fa-plus-circle fa-4x float-right"
                        style={{color: 'red'}}></i>
                 </a>
             </div>
