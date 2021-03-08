@@ -27,7 +27,7 @@ const CourseRow = (
                 <i className="fas fa-file-alt col-md-auto text-primary"></i>
                 {
                     !editing &&
-                    <Link to="/editor">
+                    <Link to={`/courses/editor/${course._id}`}>
                         {title}
                 </Link>}
                 {editing && <input

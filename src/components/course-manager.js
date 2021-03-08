@@ -167,9 +167,10 @@ class CourseManager extends React.Component {
                 {/*       render={(props)=><CourseEditor props={props}/>}>*/}
                 {/*</Route>*/}
 
-                {/*<Route path="/courses/editor"*/}
-                {/*       render={(props)=><CourseEditor {...props}/>}>*/}
-                {/*</Route>*/}
+                <Route path={["/courses/editor/:courseId/:moduleId",
+                    "/courses/editor/:courseId/:moduleId/:lessonId"]}
+                       render={(props)=><CourseEditor {...props}/>}>
+                </Route>
 
                 <a href="#">
                     <i onClick={this.addCourse}
@@ -182,4 +183,4 @@ class CourseManager extends React.Component {
 }
 
 
-export  default CourseManager
+export default CourseManager
