@@ -11,7 +11,9 @@ function App() {
                 <Route path="/" exact={true}>
                     <Home/>
                 </Route>
-                <Route path="/courses">
+                <Route path={["/courses",
+                "/courses/:layout",
+                ]} exact={true}>
                     <CourseManager/>
                 </Route>
                 <Route path={["/courses/:layout/edit/:courseId",

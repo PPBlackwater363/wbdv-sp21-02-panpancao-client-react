@@ -48,6 +48,11 @@ const lessonReducer = (state=initialState, action) => {
                 ...state,
                 selected: action.updatedLesson._id
             }
+        case "EMPTY_LESSON":
+            return {
+                ...state,
+                lessons:[]
+            }
         default:
             return state
     }

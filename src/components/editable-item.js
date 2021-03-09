@@ -33,7 +33,7 @@ const EditableItem = (
                         <input className="form-control"
                             onChange={(e) =>
                                 setCachedItem({
-                                    ...cachedItem,
+                                    ...item,
                                     title: e.target.value
                                 })}
                             value={cachedItem.title}/>
@@ -41,12 +41,12 @@ const EditableItem = (
                         <i onClick={() => {
                             setEditing(false);
                             updateItem(cachedItem)
-                        }} className="fas fa-check float-right"></i>
+                        }} className="fas fa-check float-right" style={{color:'#5cb85c'}}></i>
 
                         <i onClick={() => {
                             setEditing(false);
                             deleteItem(item)
-                        }} className="fas fa-times float-right"></i>
+                        }} className="fas fa-times float-right" style={{color:'#d9534f'}}></i>
                     </div>
                 </>
             }

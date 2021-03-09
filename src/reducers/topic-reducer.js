@@ -45,6 +45,11 @@ const topicReducer = (state = initialState, action) => {
                 ...state,
                 selected: action.updatedTopic._id
             }
+        case "EMPTY_TOPIC":
+            return {
+                ...state,
+                topics:[]
+            }
         default:
             return state
     }

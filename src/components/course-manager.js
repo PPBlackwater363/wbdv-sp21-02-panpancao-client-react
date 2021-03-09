@@ -144,11 +144,11 @@ class CourseManager extends React.Component {
                 {/*       render={(props) => <CourseEditor {...props}/>}>*/}
                 {/*</Route>*/}
 
-                <a href="#">
-                    <i onClick={this.addCourse}
-                       className="fas fa-plus-circle fa-4x float-right"
-                       style={{color: 'red'}}></i>
-                </a>
+                {/*<a href="#">*/}
+                {/*    <i onClick={this.addCourse}*/}
+                {/*       className="fas fa-plus-circle fa-4x float-right"*/}
+                {/*       style={{color: 'red'}}></i>*/}
+                {/*</a>*/}
             </div>
         )
     }

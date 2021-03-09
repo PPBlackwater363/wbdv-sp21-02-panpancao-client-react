@@ -11,17 +11,20 @@ const LessonTabs = (
         createLessonForModule,
         updateLesson,
         deleteLesson,
-        selectLesson
+        selectLesson,
+        emptyLesson
     }) => {
     const {layout, courseId, moduleId, lessonId} = useParams();
     useEffect(() => {
         if(moduleId !== "undefined" && typeof moduleId !== "undefined") {
             findLessonsForModule(moduleId)
+        } else {
+            emptyLesson(moduleId)
         }
     }, [findLessonsForModule, moduleId])
     return(
         <div>
-            <h2>Lessons</h2>
+            {/*<h2>Lessons</h2>*/}
             <ul className="nav nav-tabs">
                 {
                     lessons.map(lesson =>
@@ -83,7 +86,16 @@ const dtpm = (dispatch) => ({
         dispatch({
             type: "SELECT_LESSON",
             updatedLesson: lesson
+        }),
+
+    emptyLesson: (moduleId) => {
+        dispatch({
+            type: "EMPTY_LESSON",
         })
+        lessonService.findLessonsForModule(moduleId).then(lessons => {
+            lessons.map(lesson =>
+                lessonService.deleteLesson(lesson._id))
+        })}
 })
 
 export default connect(stpm, dtpm)(LessonTabs)
