@@ -15,7 +15,7 @@ const CourseEditorNavbar = ({course, findCourseById}) => {
         <div>
             <br/>
             <h2>
-                <Link to="/courses/table">
+                <Link to={`/courses/${layout}`}>
                     <i className="fas fa-arrow-left"></i>
                 </Link>
                 Course Editor: {course.title}
