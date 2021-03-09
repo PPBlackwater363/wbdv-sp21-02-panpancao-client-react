@@ -1,38 +1,89 @@
-import React from 'react';
+import React, {useEffect} from 'react'
 import {connect} from "react-redux";
 import EditableItem from "./editable-item";
 import {useParams} from "react-router-dom";
-
+import lessonService from '../services/lesson-service'
 
 const LessonTabs = (
     {
-        lessons=[
-            {_id:"123", title: "Lesson A"},
-            {_id:"456", title: "Lesson B"},
-            {_id:"789", title: "Lesson C"}
-        ]
+        lessons=[],
+        findLessonsForModule,
+        createLessonForModule,
+        updateLesson,
+        deleteLesson,
+        selectLesson
     }) => {
-    const {courseId, moduleId} = useParams();
-    return (
+    const {layout, courseId, moduleId, lessonId} = useParams();
+    useEffect(() => {
+        if(moduleId !== "undefined" && typeof moduleId !== "undefined") {
+            findLessonsForModule(moduleId)
+        }
+    }, [findLessonsForModule, moduleId])
+    return(
         <div>
-            <h2>Lessons {courseId} {moduleId}</h2>
+            <h2>Lessons</h2>
             <ul className="nav nav-tabs">
                 {
-                    lessons.map(lesson=>
+                    lessons.map(lesson =>
                         <li className="nav-item">
                             <EditableItem
-                                to={`/courses/editor/${courseId}/${moduleId}/${lesson._id}`}
-                                item={lesson}/>
+                                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
+                                item={lesson}
+                                updateItem={updateLesson}
+                                deleteItem={deleteLesson}
+                                selectItem={selectLesson}
+                                isActive={lesson._id === lessonId ? "active" : ""}
+                            />
                         </li>
                     )
                 }
+                <li>
+                    <i onClick={() => createLessonForModule(moduleId)} className="fas fa-plus"></i>
+                </li>
             </ul>
+
+            <div>
+
+            </div>
+
         </div>)}
 
 const stpm = (state) => ({
     lessons: state.lessonReducer.lessons
-
 })
-const dtpm = (dispatch) => ({})
+const dtpm = (dispatch) => ({
+    findLessonsForModule: (moduleId) => {
+        lessonService.findLessonsForModule(moduleId)
+            .then(lessons => dispatch({
+                type: "FIND_LESSONS",
+                lessons
+            }))
+    },
+    createLessonForModule: (moduleId) => {
+        console.log("CREATE LESSON FOR MODULE: " + moduleId)
+        lessonService
+            .createLessonForModule(moduleId, {title: "New Lesson"})
+            .then(lesson => dispatch({
+                type: "CREATE_LESSON",
+                lesson
+            }))
+    },
+    deleteLesson: (lessonToDelete) => {
+        lessonService.deleteLesson(lessonToDelete._id).then(
+            (status) => dispatch({ type: 'DELETE_LESSON', deleteItem: lessonToDelete })
+        )
+    },
+    updateLesson: (lesson) =>
+        lessonService.updateLesson(lesson._id, lesson)
+            .then(status => dispatch({
+                type: "UPDATE_LESSON",
+                updatedLesson: lesson
+            })),
+    selectLesson: (lesson) =>
+        dispatch({
+            type: "SELECT_LESSON",
+            updatedLesson: lesson
+        })
+})
 
-export default connect(stpm,dtpm)(LessonTabs)
+export default connect(stpm, dtpm)(LessonTabs)

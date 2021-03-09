@@ -31,22 +31,10 @@ class CourseManager extends React.Component {
             .then(status => this.setState((prevState) => ({
                 ...prevState,
                 courses: prevState.courses.map(c => c._id === course._id ? course : c)
-
-                // courses: prevState.courses.map(c => {
-                //     if(c._id === course._id) {
-                //         return course
-                //     } else {
-                //         return c
-                //     }
-                // })
             })))
     }
 
     componentDidMount = () =>
-        // findAllCourses()
-        //     .then(actualCourses => this.setState({
-        //         courses: actualCourses
-        //     }))
         courseService.findAllCourses()
             .then(courses => this.setState({courses}))
 
@@ -70,8 +58,6 @@ class CourseManager extends React.Component {
                     course
                 ]
             })))
-        // this.state.courses.push(newCourse)
-        // this.setState(this.state)
         this.setState({newCourse: {title: "", owner: "me",
                 lastModified:new Date().toLocaleDateString()}})
         event.preventDefault()
@@ -81,12 +67,6 @@ class CourseManager extends React.Component {
 
         courseService.deleteCourse(courseToDelete._id)
             .then(status => {
-                // const newCourses = this.state.courses
-                //     .filter(course => course !== courseToDelete)
-                // this.setState({
-                //     courses: newCourses
-                // })
-
                 this.setState((prevState)=>{
                     let nextState = {}
                     nextState.courses =
@@ -96,8 +76,6 @@ class CourseManager extends React.Component {
                     return nextState
                 })
             })
-        // console.log(course)
-
     }
 
 
@@ -144,33 +122,27 @@ class CourseManager extends React.Component {
 
                 </body>
 
-                <Route path="/courses/table">
+                <Route path="/courses/table" exact={true}>
                     <CourseTable
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
 
-                <Route path="/courses/grid">
+                <Route path="/courses/grid" exact={true}>
                 <CourseGrid
                     deleteCourse={this.deleteCourse}
                     updateCourse={this.updateCourse}
                     courses={this.state.courses}/>
                 </Route>
 
-                {/*<Route path="/courses/editor">*/}
-                {/*<CourseEditor*/}
-                {/*    courses={this.state.courses}/>*/}
+                {/*<Route path={[*/}
+                {/*    "/courses/editor/:courseId",*/}
+                {/*    "/courses/editor/:courseId/:moduleId",*/}
+                {/*    "/courses/editor/:courseId/:moduleId/:lessonId"]}*/}
+                {/*       exact={true}*/}
+                {/*       render={(props) => <CourseEditor {...props}/>}>*/}
                 {/*</Route>*/}
-
-                {/*<Route path="/courses/editor"*/}
-                {/*       render={(props)=><CourseEditor props={props}/>}>*/}
-                {/*</Route>*/}
-
-                <Route path={["/courses/editor/:courseId/:moduleId",
-                    "/courses/editor/:courseId/:moduleId/:lessonId"]}
-                       render={(props)=><CourseEditor {...props}/>}>
-                </Route>
 
                 <a href="#">
                     <i onClick={this.addCourse}
