@@ -47,7 +47,7 @@ const CourseEditor = ({history}) => {
             </div>
             <div className="col-8">
                 <LessonTabs/>
-                <br/>
+                <hr/>
                 <TopicPills/>
             </div>
         </div>
