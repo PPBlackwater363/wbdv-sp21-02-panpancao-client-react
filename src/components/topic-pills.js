@@ -8,9 +8,6 @@ import lessonService from "../services/lesson-service";
 const TopicPills = (
     {
         topics=[
-            // {_id: "123", title: "Lesson A"},
-            // {_id: "123", title: "Lesson B"},
-            // {_id: "123", title: "Lesson C"}
         ],
         findTopicsForLesson,
         createTopic,
@@ -40,6 +37,7 @@ const TopicPills = (
                         <li className={`nav-item ${topic._id === topicId ? 'active' : ''}`}>
                             <EditableItem
                                 active={topic._id === topicId}
+                                // to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
                                 to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
                                 item={topic}
                                 updateItem={updateTopic}
