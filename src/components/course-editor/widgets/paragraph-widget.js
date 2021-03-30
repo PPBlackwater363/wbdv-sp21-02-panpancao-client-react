@@ -16,15 +16,17 @@ const ParagraphWidget = ({widget, updateWidget, deleteWidget}) => {
                             className="form-control">
                         <option value={"HEADING"}>HEADING</option>
                         <option value={"PARAGRAPH"}>PARAGRAPH</option>
+                        <option value={"LIST"}>LIST</option>
+                        <option value={"IMAGE"}>IMAGE</option>
                     </select>
                     <br/>
-
                     <textarea value={widgetCache.text}
                            onChange={(e)=>{
                                setWidgetCache(widgetCache=>({...widgetCache, text: e.target.value}))
                            }}
                            className="form-control"/>
                     <br/>
+
                     <i
                         onClick={() => {
                             updateWidget(widgetCache.id, widgetCache)
