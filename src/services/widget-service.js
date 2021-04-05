@@ -11,8 +11,6 @@ export const createWidget=(topicId, widget) =>
     })
         .then(response => response.json())
 
-
-
 export const deleteWidget = (wid) =>
     fetch(`${BASE_URL}/widgets/${wid}`, {
         method: "DELETE",
@@ -31,8 +29,6 @@ export const updateWidget = (wid, widget) =>
 
 export const findWidgetsForTopic = (tid) =>
     fetch(`${BASE_URL}/topics/${tid}/widgets`).then(res => res.json())
-
-
 
 const api = {
     createWidget,

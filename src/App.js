@@ -5,10 +5,18 @@ import CourseEditor from "./components/course-editor";
 import React from "react";
 import QuizzesList from "./components/quizzes/quizzes-list";
 import Quiz from "./components/quizzes/quiz";
+import {Provider} from "react-redux";
+import {combineReducers, createStore} from "redux";
+import quizReducer from "./reducers/quiz-reducer";
+
+const reducer = combineReducers({quizReducer: quizReducer})
+
+const store = createStore(reducer)
 
 function App() {
     return (
         <BrowserRouter>
+            <Provider store={store}>
             <div className="container-fluid">
                 <Route path="/" exact={true}>
                     <Home/>
@@ -40,8 +48,8 @@ function App() {
                 <Route path="/courses/:courseId/quizzes/:quizId" exact={true}>
                     <Quiz/>
                 </Route>
-
             </div>
+            </Provider>
         </BrowserRouter>
     );
 }
