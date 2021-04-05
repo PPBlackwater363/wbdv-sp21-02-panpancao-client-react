@@ -38,6 +38,11 @@ const CourseRow = (
 
             <td className="d-none d-md-table-cell" scope="col-2" style={{width: '25%'}}>{owner}</td>
             <td className="d-none d-lg-table-cell">{lastModified}</td>
+            <td>
+                <Link  to={`/courses/${course._id}/quizzes`}>
+                    Quizzes
+                </Link>
+            </td>
             <td >
 
                 {!editing && <i onClick={() => setEditing(true)}
