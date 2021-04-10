@@ -1,5 +1,4 @@
 import quizService from '../services/quiz-service';
-import widgetService from '../services/widget-service';
 
 export const FIND_ALL_QUIZZES = "FIND_ALL_QUIZZES";
 

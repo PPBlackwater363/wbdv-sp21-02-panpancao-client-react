@@ -63,6 +63,7 @@ const TrueFalseQuestion = ({question}) => {
                                            className=''
                                            name={question._id}
                                            checked
+                                           disabled
                                     />
                                     TRUE
                                     <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
@@ -70,26 +71,28 @@ const TrueFalseQuestion = ({question}) => {
                             </li>
                         }
                         {yourAnswer === question.correct && yourAnswer === 'true' &&
-                        <li className='list-group-item list-group-item-danger'>
+                        <li className='list-group-item'>
                             <lable>
                                 <input type='radio'
                                        className=''
                                        name={question._id}
+                                       disabled
                                 />
                                 FALSE
-                                <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
+                                {/*<i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>*/}
                             </lable>
                         </li>
                         }
                         {yourAnswer === question.correct && yourAnswer === 'false' &&
-                        <li className='list-group-item list-group-item-danger'>
+                        <li className='list-group-item'>
                             <lable>
                                 <input type='radio'
                                        className=''
                                        name={question._id}
+                                       disabled
                                 />
                                 TRUE
-                                <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
+                                {/*<i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>*/}
                             </lable>
                         </li>
                         }
@@ -100,6 +103,7 @@ const TrueFalseQuestion = ({question}) => {
                                        className=''
                                        name={question._id}
                                        checked
+                                       disabled
                                 />
                                 FALSE
                                 <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
@@ -115,6 +119,7 @@ const TrueFalseQuestion = ({question}) => {
                                            className=''
                                            name={question._id}
                                            checked
+                                           disabled
                                     />
                                     TRUE
                                     <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
@@ -128,6 +133,7 @@ const TrueFalseQuestion = ({question}) => {
                                 <input type='radio'
                                        className=''
                                        name={question._id}
+                                       disabled
                                 />
                                 FALSE
                                 <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
@@ -141,6 +147,7 @@ const TrueFalseQuestion = ({question}) => {
                                 <input type='radio'
                                        className=''
                                        name={question._id}
+                                       disabled
                                 />
                                 TRUE
                                 <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
@@ -155,6 +162,7 @@ const TrueFalseQuestion = ({question}) => {
                                        className=''
                                        name={question._id}
                                        checked
+                                       disabled
                                 />
                                 FALSE
                                 <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
