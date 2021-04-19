@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 
-const TrueFalseQuestion = ({question}) => {
+const TrueFalseQuestion = ({question, isGraded, setQuestionsWithAns}) => {
     const [yourAnswer, setYourAnswer] = useState('');
     const [grade, setGrade] = useState(false);
 
     return (
         <div>
             <h5>
-                {grade &&
+                {isGraded &&
                     <>
                         {question.question}
                         {
@@ -20,7 +20,7 @@ const TrueFalseQuestion = ({question}) => {
                         }
                     </>
                 }
-                {!grade &&
+                {!isGraded &&
                     <>
                         {question.question}
                     </>
@@ -28,14 +28,23 @@ const TrueFalseQuestion = ({question}) => {
             </h5>
             <ul className="list-group">
                 {
-                    !grade &&
+                    !isGraded &&
                     <>
                         <li className="list-group-item">
                             <lable>
                                 <input type='radio'
                                        className=''
+                                       disabled={isGraded}
                                        onClick={() => {
                                            setYourAnswer('true')
+                                           setQuestionsWithAns((prev) =>
+                                           prev.map((q) => {
+                                               if (q._id === question._id) {
+                                                   return {...q, answer: "true"}
+                                               } else {
+                                                   return q
+                                               }
+                                           }))
                                        }}
                                        name={question._id}/> TRUE
                             </lable>
@@ -44,8 +53,17 @@ const TrueFalseQuestion = ({question}) => {
                             <lable>
                                 <input type='radio'
                                        className=''
+                                       disabled={isGraded}
                                        onClick={() => {
                                            setYourAnswer('false')
+                                           setQuestionsWithAns((prev) =>
+                                               prev.map((q) => {
+                                                   if (q._id === question._id) {
+                                                       return {...q, answer: "false"}
+                                                   } else {
+                                                       return q
+                                                   }
+                                               }))
                                        }}
                                        name={question._id}/> FALSE
                             </lable>
@@ -54,7 +72,7 @@ const TrueFalseQuestion = ({question}) => {
                 }
 
                 {
-                    grade &&
+                    isGraded &&
                     <>
                         {yourAnswer === question.correct && yourAnswer === 'true' &&
                             <li className='list-group-item list-group-item-success'>
@@ -177,18 +195,18 @@ const TrueFalseQuestion = ({question}) => {
                 Your answer: {yourAnswer}
             </p>
 
-            <button type="button"
-                    className="btn btn-success"
-                    onClick={() => {
-                        if (yourAnswer === '') {
-                            alert('Please choose an answer.')
-                        } else {
-                            setGrade(!grade)
-                        }
-                    }}
-            >
-                Grade
-            </button>
+            {/*{<button type="button"*/}
+            {/*         className="btn btn-success"*/}
+            {/*         onClick={() => {*/}
+            {/*             if (yourAnswer === '') {*/}
+            {/*                 alert('Please choose an answer.')*/}
+            {/*             } else {*/}
+            {/*                 setGrade(!grade)*/}
+            {/*             }*/}
+            {/*         }}*/}
+            {/*>*/}
+            {/*    Grade*/}
+            {/*</button>}*/}
             <hr/>
 
         </div>
